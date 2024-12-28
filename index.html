@@ -3,78 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doll Dress Color Selector</title>
+    <title>Dress Color Picker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
         }
 
-        .doll-container {
+        .container {
+            margin-top: 20px;
+        }
+
+        .doll {
             position: relative;
             display: inline-block;
         }
 
-        .doll-image {
-            width: 200px;
+        .doll-body {
+            width: 150px;
+            height: 200px;
+            background-color: #ffcc99;
+            border-radius: 50% 50% 0 0;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .color-option {
-            margin: 10px;
-            padding: 10px;
-            cursor: pointer;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .color-option:hover {
-            background-color: #f0f0f0;
-        }
-
-        select {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
+        .dress {
+            width: 150px;
+            height: 200px;
+            background-color: red;
+            border-radius: 0 0 75px 75px;
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     </style>
 </head>
 <body>
-
-    <h1>Choose a Color for the Doll's Dress</h1>
-
-    <div class="doll-container">
-        <img id="dollImage" class="doll-image" src="doll-default.png" alt="Doll">
+    <h1>Dress Color Picker</h1>
+    <p>Select a color to change the doll's dress:</p>
+    <div class="container">
+        <label for="colorPicker">Choose Color:</label>
+        <input type="color" id="colorPicker">
     </div>
 
-    <div>
-        <button class="color-option" onclick="changeDressColor('red')">Red</button>
-        <button class="color-option" onclick="changeDressColor('blue')">Blue</button>
-        <button class="color-option" onclick="changeDressColor('green')">Green</button>
-        <button class="color-option" onclick="changeDressColor('yellow')">Yellow</button>
+    <div class="doll">
+        <div class="doll-body"></div>
+        <div class="dress" id="dress"></div>
     </div>
-
-    <br><br>
-
-    <label for="colorSelect">Or select a color from the dropdown:</label>
-    <select id="colorSelect" onchange="changeDressColorFromSelect()">
-        <option value="red">Red</option>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-    </select>
 
     <script>
-        function changeDressColor(color) {
-            let dollImage = document.getElementById('dollImage');
-            dollImage.src = color + '-dress.png'; // Assuming dress images are named as color-dress.png
-        }
+        const colorPicker = document.getElementById('colorPicker');
+        const dress = document.getElementById('dress');
 
-        function changeDressColorFromSelect() {
-            let selectedColor = document.getElementById('colorSelect').value;
-            changeDressColor(selectedColor);
-        }
+        colorPicker.addEventListener('input', (event) => {
+            dress.style.backgroundColor = event.target.value;
+        });
     </script>
-
 </body>
 </html>
+
