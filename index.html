@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doll Dress Color Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .doll-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .doll-image {
+            width: 200px;
+        }
+
+        .color-option {
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .color-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose a Color for the Doll's Dress</h1>
+
+    <div class="doll-container">
+        <img id="dollImage" class="doll-image" src="doll-default.png" alt="Doll">
+    </div>
+
+    <div>
+        <button class="color-option" onclick="changeDressColor('red')">Red</button>
+        <button class="color-option" onclick="changeDressColor('blue')">Blue</button>
+        <button class="color-option" onclick="changeDressColor('green')">Green</button>
+        <button class="color-option" onclick="changeDressColor('yellow')">Yellow</button>
+    </div>
+
+    <br><br>
+
+    <label for="colorSelect">Or select a color from the dropdown:</label>
+    <select id="colorSelect" onchange="changeDressColorFromSelect()">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+    </select>
+
+    <script>
+        function changeDressColor(color) {
+            let dollImage = document.getElementById('dollImage');
+            dollImage.src = color + '-dress.png'; // Assuming dress images are named as color-dress.png
+        }
+
+        function changeDressColorFromSelect() {
+            let selectedColor = document.getElementById('colorSelect').value;
+            changeDressColor(selectedColor);
+        }
+    </script>
+
+</body>
+</html>
